@@ -126,7 +126,13 @@ const Chat = () => {
       return JSON.stringify(data, null, 2); // Nếu là object, format JSON cho đẹp
     }
   };
-  
+  const formatLatexContent = (content) => {
+    return content
+      .replace(/\\\[/g, "$$")  // Chuyển tất cả \[ thành $$
+      .replace(/\\\]/g, "$$")  // Chuyển tất cả \] thành $$
+      .replace(/\\\(/g, "$")   // Chuyển tất cả \( thành $
+      .replace(/\\\)/g, "$");  // Chuyển tất cả \) thành $
+  };
   
   return (
     <div className=" flex items-center justify-center">
@@ -160,12 +166,14 @@ const Chat = () => {
                     }`}
                   >
                     {msg.content ? (
-                      // <ReactMarkdown
-                      //   children={msg.content}
-                      //   remarkPlugins={[remarkMath]} 
-                      //   rehypePlugins={[rehypeKatex]}
-                      // />
-                      <Latex>{formattedData(msg.content)}</Latex>  
+                      <ReactMarkdown
+                        // children={msg.content}
+                        children={formatLatexContent(msg.content)}
+                        remarkPlugins={[remarkMath]} 
+                        rehypePlugins={[rehypeKatex]}
+                        className="markdown"
+                      />
+                      // <Latex>{formattedData(msg.content)}</Latex>  
                     ) : (
                       <p>Đang tải...</p>
                     )}
