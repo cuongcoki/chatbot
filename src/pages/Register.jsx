@@ -97,12 +97,12 @@ const Register = () => {
   // console.log("dataTHPT", dataTHPT.data.map((data) => data.ma_tinh))
   // console.log("dataTHPT", dataTHPT.data.map((data) => data))
 
- 
+
   const [selectedProvince, setSelectedProvince] = useState(null);
   const filteredSchools = selectedProvince
     ? dataTHPT.data.filter((school) => school.ma_tinh === selectedProvince.id)
     : [];
-    
+
   // console.log("filteredSchools", filteredSchools.map((school) => school.data.data.map((data) => data)))
 
 
@@ -118,25 +118,27 @@ const Register = () => {
   // console.log("options", options);
   return (
     <div
-      className="flex items-center justify-center min-h-screen w-screen bg-cover bg-center"
+      className="flex items-center justify-center min-h-screen w-full bg-cover bg-center p-4 md:p-6 lg:p-8"
       style={{ backgroundImage: `url(${background})` }}
     >
-      <div className="relative shadow-xl " ref={formRef}>
-        <div className="relative z-20  bg-green-700 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 p-2 ">
-          <div className="max-w-lg w-full  shadow-md rounded-lg p-6">
-            <h2 className="text-xl font-semibold text-center text-white">
+      <div className="relative shadow-xl max-w-md w-full mx-auto">
+        <div 
+        className="relative z-20 bg-green-700 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 p-3 sm:p-4"
+          ref={formRef}>
+          <div className="w-full p-2 sm:p-4 flex flex-col justify-center items-center">
+            <h2 className="text-base sm:text-lg md:text-xl font-semibold text-center text-white leading-tight">
               ĐĂNG KÝ HỆ THỐNG HỖ TRỢ ÔN TẬP MÔN TOÁN LỚP 12 KỲ THI THPT NĂM
               2025
             </h2>
 
-            <form onSubmit={formik.handleSubmit} className="mt-4 space-y-3">
+            <form onSubmit={formik.handleSubmit} className="mt-4 space-y-3 w-full">
               {/* Họ và tên */}
               <div>
                 <input
                   type="text"
                   name="ho_va_ten"
                   placeholder="Họ và tên"
-                  className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 sm:p-3 border rounded-md focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                   value={formik.values.ho_va_ten}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -154,7 +156,7 @@ const Register = () => {
                   type="text"
                   name="sdt"
                   placeholder="Số điện thoại"
-                  className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 sm:p-3 border rounded-md focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                   value={formik.values.sdt}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -172,7 +174,7 @@ const Register = () => {
                   type="email"
                   name="email"
                   placeholder="Email"
-                  className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 sm:p-3 border rounded-md focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -190,7 +192,7 @@ const Register = () => {
                   type="password"
                   name="password"
                   placeholder="Mật khẩu"
-                  className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-2 sm:p-3 border rounded-md focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
                   value={formik.values.password}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
